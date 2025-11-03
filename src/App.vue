@@ -1,11 +1,31 @@
-<script setup></script>
+
+
+<script>
+import Header from './components/Header.vue'
+import Navbar from './components/Navbar.vue'
+import Footer from './components/Footer.vue'
+
+export default {
+  components: { Header, Navbar, Footer }
+}
+
+import { onMounted, onUpdated } from 'vue'
+onMounted(() => {
+  console.log('App mounted')
+})
+
+onUpdated(() => {
+  console.log('App updated')
+})
+</script>
+
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <Header />
+  <br>
+  <Navbar />
+  <router-view />
+  <br>
+  <Footer />
 </template>
 
-<style scoped></style>
