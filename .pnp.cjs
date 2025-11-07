@@ -30,6 +30,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@tailwindcss/vite", "virtual:77ecd8ee12ff4f687bfa57191716d9e562f6d0fe221e3118659f1719e46ed04ea1868acd29386d73f4e461a57ee80f29dc898e44b68669f6760dfedbd420bbaa#npm:4.1.16"],\
           ["@vitejs/plugin-vue", "virtual:77ecd8ee12ff4f687bfa57191716d9e562f6d0fe221e3118659f1719e46ed04ea1868acd29386d73f4e461a57ee80f29dc898e44b68669f6760dfedbd420bbaa#npm:6.0.1"],\
+          ["bootstrap-icons", "npm:1.13.1"],\
           ["projectan", "workspace:."],\
           ["tailwindcss", "npm:4.1.16"],\
           ["vite", "virtual:77ecd8ee12ff4f687bfa57191716d9e562f6d0fe221e3118659f1719e46ed04ea1868acd29386d73f4e461a57ee80f29dc898e44b68669f6760dfedbd420bbaa#npm:7.1.12"],\
@@ -1678,6 +1679,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["bootstrap-icons", [\
+      ["npm:1.13.1", {\
+        "packageLocation": "../home/node/.yarn/berry/cache/bootstrap-icons-npm-1.13.1-ea10677638-10c0.zip/node_modules/bootstrap-icons/",\
+        "packageDependencies": [\
+          ["bootstrap-icons", "npm:1.13.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["brace-expansion", [\
       ["npm:2.0.2", {\
         "packageLocation": "../home/node/.yarn/berry/cache/brace-expansion-npm-2.0.2-bc7f134bbc-10c0.zip/node_modules/brace-expansion/",\
@@ -2767,6 +2777,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@tailwindcss/vite", "virtual:77ecd8ee12ff4f687bfa57191716d9e562f6d0fe221e3118659f1719e46ed04ea1868acd29386d73f4e461a57ee80f29dc898e44b68669f6760dfedbd420bbaa#npm:4.1.16"],\
           ["@vitejs/plugin-vue", "virtual:77ecd8ee12ff4f687bfa57191716d9e562f6d0fe221e3118659f1719e46ed04ea1868acd29386d73f4e461a57ee80f29dc898e44b68669f6760dfedbd420bbaa#npm:6.0.1"],\
+          ["bootstrap-icons", "npm:1.13.1"],\
           ["projectan", "workspace:."],\
           ["tailwindcss", "npm:4.1.16"],\
           ["vite", "virtual:77ecd8ee12ff4f687bfa57191716d9e562f6d0fe221e3118659f1719e46ed04ea1868acd29386d73f4e461a57ee80f29dc898e44b68669f6760dfedbd420bbaa#npm:7.1.12"],\

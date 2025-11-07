@@ -1,18 +1,25 @@
 <script setup>
+import { ref, onMounted } from 'vue'
 
+const currentLang = ref('ro')
+const emit = defineEmits(['changeLanguage'])
+
+onMounted(() => {
+  const saved = localStorage.getItem('appLanguage')
+  if (saved && ['ro', 'en'].includes(saved)) {
+    currentLang.value = saved
+  }
+})
+
+const switchLanguage = () => {
+  currentLang.value = currentLang.value === 'ro' ? 'en' : 'ro'
+  localStorage.setItem('appLanguage', currentLang.value)
+  emit('changeLanguage', currentLang.value)
+}
 </script>
 
-
 <template>
-  <div>
-    <select 
-    
-      @change="$emit('changeLanguage', $event.target.value)"
-    >
-      <option value="ro">Română</option>
-      <option value="en">English</option>
-      <option value="sign"> Limbaj Mimico-Gestual</option>
-    </select>
-  </div>
+  <button @click="switchLanguage">
+    {{ currentLang === 'ro' ? 'EN' : 'RO' }}
+  </button>
 </template>
-

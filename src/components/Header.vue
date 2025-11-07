@@ -9,9 +9,12 @@ const handleLanguageChange = (lang) => {
 <template>
   <header>
     <h1>EchoFree</h1>
-    <LanguageSelector @changeLanguage="handleLanguageChange" />
+    <div>
+      <router-link to="/">Acasă</router-link>
+      <router-link to="/lessons">Lecții</router-link>
+      <router-link to="/quiz">Teste</router-link>
+      <router-link to="/contact">Contact</router-link>
+      <LanguageSelector @changeLanguage="handleLanguageChange" />
+    </div>
   </header>
 </template>
-
-<style scoped>
-</style>
