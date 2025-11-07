@@ -4,28 +4,34 @@ import Navbar from './components/Navbar.vue'
 import Footer from './components/Footer.vue'
 import Lessons from './components/Lessons.vue'
 import Alphabet from './components/Alphabet.vue'
-import Numbers from  './components/Numbers.vue'
+import Numbers from './components/Numbers.vue'
 import Sign from './components/Sign.vue'
 import DailyChallange from './components/DailyChallange.vue'
 import FeedBack from './components/FeedBack.vue'
 import LearningTimer from './components/LearningTimer.vue'
 import QuickTip from './components/QuickTip.vue'
+import SignDificulty from './components/SignDificulty.vue'
+import Acheivements from './components/Acheivements.vue'
+import Quote from './components/Quote.vue'
 </script>
 
 <template>
   <Header />
-  
-  
+
+
   <main>
     <Lessons />
-    <Alphabet/>
-    <Numbers/>
-    <Sign/>
-    <DailyChallange/>
-    <FeedBack/>
-    <LearningTimer/>
-    <QuickTip/>
+    <Alphabet />
+    <Numbers />
+    <Sign />
+    <DailyChallange />
+    <FeedBack />
+    <LearningTimer />
+    <QuickTip />
+    <SignDificulty />
+    <Acheivements/>
+    <Quote/>
   </main>
-  
+
   <Footer />
 </template>
