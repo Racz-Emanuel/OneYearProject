@@ -1,4 +1,3 @@
-<!-- src/components/BootstrapIcon.vue -->
 <script setup>
 defineProps({
   name: {

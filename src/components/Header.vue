@@ -1,6 +1,6 @@
 <script setup>
 import LanguageSelector from './LanguageSelector.vue'
-
+import Navbar from './Navbar.vue'
 const handleLanguageChange = (lang) => {
   console.log("Limba selectată:", lang)
 }
@@ -9,12 +9,9 @@ const handleLanguageChange = (lang) => {
 <template>
   <header>
     <h1>EchoFree</h1>
-    <div>
-      <router-link to="/">Acasă</router-link>
-      <router-link to="/lessons">Lecții</router-link>
-      <router-link to="/quiz">Teste</router-link>
-      <router-link to="/contact">Contact</router-link>
+ 
+    <Navbar/>
       <LanguageSelector @changeLanguage="handleLanguageChange" />
-    </div>
+    
   </header>
 </template>

@@ -1,37 +1,46 @@
+
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 import BootstrapIcon from '@/components/BootStrapIcons.vue'
 
+const inputValue = ref('')
 const achievements = ref([])
 
-const checkAchievements = () => {
-  const stats = JSON.parse(localStorage.getItem('learningStats') || '{}')
+const checkAchievements = (total) => {
   const newAchievements = []
-
-  if (stats.learned >= 5) {
-    newAchievements.push({ name: 'Începător', icon: 'award' })
-  }
-  if (stats.learned >= 10) {
-    newAchievements.push({ name: 'Învățător', icon: 'book' })
-  }
-  if (stats.learned >= 20) {
-    newAchievements.push({ name: 'Maestru', icon: 'gem' })
-  }
-
+  if (total >= 5) newAchievements.push({ name: 'Inceaptor', icon: 'award' })
+  if (total >= 10) newAchievements.push({ name: 'Intermediar', icon: 'star' })
+  if (total >= 20) newAchievements.push({ name: 'Maestru', icon: 'gem' })
   achievements.value = newAchievements
 }
 
-onMounted(() => {
-  checkAchievements()
-  window.addEventListener('storage', checkAchievements)
-})
+const addLessons = () => {
+  const num = parseInt(inputValue.value)
+  if (!isNaN(num) && num > 0) {
+    checkAchievements(num)
+    inputValue.value = ''
+  }
+}
 </script>
 
 <template>
   <div>
     <h3>Insigne obținute</h3>
+
+    
+    <div>
+      <input 
+        v-model="inputValue" 
+        type="number" 
+        placeholder="Ce numar de lecti ai invatat" 
+       
+      />
+      <button @click="addLessons">Verifică</button>
+    </div>
+
+    
     <div v-if="achievements.length === 0">
-      <p>Începe să înveți semne pentru a debloca insigne!</p>
+      <p>Introdu un număr pentru a vedea insignele!</p>
     </div>
     <div v-else v-for="a in achievements" :key="a.name">
       <p>

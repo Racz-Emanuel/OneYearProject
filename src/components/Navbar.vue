@@ -1,14 +1,16 @@
 <script setup>
-
+import {RouterLink} from 'vue-router'
 </script>
 
 <template>
   <nav>
-    <router-link to="/">Acasă</router-link>
-    <router-link to="/lessons">Lecții</router-link>
-    <router-link to="/quiz">Teste</router-link>
-    <router-link to="/about">Despre</router-link>
-    <router-link to="/contact">Contact</router-link>
+    <RouterLink to="/">Acasă</RouterLink>|
+    <RouterLink to="/lessons">Lecții</RouterLink>|
+    <RouterLink to="/quiz">Teste</RouterLink>|
+    <RouterLink to="/contact">Contact</RouterLink>|
+    <RouterLink to="/despre">Despre</RouterLink>|
+    <RouterLink to="/daily-challenge">Provocarea Zilei</RouterLink>
+
   </nav>
 </template>
 

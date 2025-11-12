@@ -1,4 +1,3 @@
-<!-- src/components/LearningTimer.vue -->
 <script setup>
 import { ref } from 'vue'
 
@@ -18,7 +17,7 @@ const stopLearning = () => {
   if (!isLearning.value) return
   endTime.value = Date.now()
   isLearning.value = false
-  duration.value = Math.round((endTime.value - startTime.value) / 1000) // în secunde
+  duration.value = Math.round((endTime.value - startTime.value) / 1000) 
 }
 </script>
 

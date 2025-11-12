@@ -1,4 +1,3 @@
-<!-- src/components/DailyChallenge.vue -->
 <script setup>
 import { ref, onMounted } from 'vue'
 import SignImage from '@/components/SignImage.vue'
@@ -25,7 +24,7 @@ onMounted(() => {
   <div>
     <h2>Provocarea zilei</h2>
     
-    <p><strong>Învață semnul de astăzi:</strong></p>
+    <p>Învață semnul de astăzi:</p>
     
     <SignImage 
       v-if="todaySign"

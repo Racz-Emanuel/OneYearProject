@@ -1,4 +1,3 @@
-<!-- src/components/MotivationQuote.vue -->
 <script setup>
 import { ref, onMounted } from 'vue'
 

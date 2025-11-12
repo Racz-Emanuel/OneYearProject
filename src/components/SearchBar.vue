@@ -10,6 +10,6 @@ const emit = defineEmits(['search'])
     v-model="searchTerm"
     @input="emit('search', searchTerm)"
     type="text"
-    placeholder="Caută lecție..."
+    placeholder="Cauta lectia"
   />
 </template>
