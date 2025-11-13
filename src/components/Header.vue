@@ -8,8 +8,8 @@ const handleLanguageChange = (lang) => {
 
 <template>
   <header>
-    <h1>EchoFree</h1>
-    <h1 class="text-3xl font-bold text-blue-500">Hello Tailwind!</h1>
+
+    <h1 class="text-3xl font-bold text-blue-500">EchoFree</h1>
 
  
     <Navbar/>
@@ -17,3 +17,7 @@ const handleLanguageChange = (lang) => {
     
   </header>
 </template>
+
+<style>
+ @import "tailwindcss";
+</style>
