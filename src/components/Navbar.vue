@@ -1,18 +1,38 @@
 <script setup>
-import {RouterLink} from 'vue-router'
+import { RouterLink } from 'vue-router'
+
+defineProps({
+  lang: {
+    type: String,
+    default: 'ro'
+  }
+})
 </script>
 
 <template>
-  <nav>
-    <RouterLink to="/">Acasă</RouterLink>|
-    <RouterLink to="/lessons">Lecții</RouterLink>|
-    <RouterLink to="/quiz">Teste</RouterLink>|
-    <RouterLink to="/contact">Contact</RouterLink>|
-    <RouterLink to="/despre">Despre</RouterLink>|
-    <RouterLink to="/daily-challenge">Provocarea Zilei</RouterLink>
+  <nav class="flex gap-2">
+    <RouterLink to="/">
+      {{ lang === 'ro' ? 'Acasă' : 'Home' }}
+    </RouterLink> |
 
+    <RouterLink to="/lessons">
+      {{ lang === 'ro' ? 'Lecții' : 'Lessons' }}
+    </RouterLink> |
+
+    <RouterLink to="/quiz">
+      {{ lang === 'ro' ? 'Teste' : 'Quizzes' }}
+    </RouterLink> |
+
+    <RouterLink to="/contact">
+      {{ lang === 'ro' ? 'Contact' : 'Contact' }}
+    </RouterLink> |
+
+    <RouterLink to="/despre">
+      {{ lang === 'ro' ? 'Despre' : 'About' }}
+    </RouterLink> |
+
+    <RouterLink to="/daily-challenge">
+      {{ lang === 'ro' ? 'Provocarea Zilei' : 'Daily Challenge' }}
+    </RouterLink>
   </nav>
 </template>
-
-<style scoped>
-</style>
