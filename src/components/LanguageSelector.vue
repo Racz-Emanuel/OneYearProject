@@ -20,6 +20,6 @@ const switchLanguage = () => {
 
 <template>
   <button @click="switchLanguage">
-    {{ currentLang === 'ro' ? 'EN' : 'RO' }}
+    {{ currentLang === 'ro' ? 'RO' : 'EN' }}
   </button>
 </template>
