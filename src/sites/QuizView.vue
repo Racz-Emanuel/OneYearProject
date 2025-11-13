@@ -1,5 +1,6 @@
 <script setup>
 
+import LearningTimer from '@/components/LearningTimer.vue';
 import QuickTip from '@/components/QuickTip.vue';
 
 </script>
@@ -9,6 +10,7 @@ import QuickTip from '@/components/QuickTip.vue';
     <h2>Teste</h2>
     <p>Aici vor fi quiz-urile.</p>
     <QuickTip/>
+    <LearningTimer/>
   </div>
 
 

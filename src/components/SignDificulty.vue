@@ -13,7 +13,7 @@ const levels = ['incepator', 'mediu', 'avansat']
     <option v-for="level in levels":key=level :value="level">
         {{ level }}
     </option>
-<p>Acest semn are ca dificultate : <strong>{{ difficulty }}</strong></p>
+<p>Dificultatea semnului : <strong>{{ difficulty }}</strong></p>
 </select>
 </div>
 </template>
