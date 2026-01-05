@@ -9,8 +9,9 @@ import image from '@/assets/asi.jpg'
   <div class = "header">
     <img :src="logo" alt="logo" class="logo"/>
     <img :src="image" alt="image" class="image"/>
- <h2>Bine ai venit</h2>
-    <Quote />
+ <h2 class = "center">Bine ai venit !</h2>
+    
+ <Quote />
 
 
 
@@ -18,19 +19,33 @@ import image from '@/assets/asi.jpg'
 </template>
 
 <style scoped>
-.header{
-position: relative;
+.header {
+  padding: 20px;
 }
+
+.center {
+  position:absolute;
+    top:190px;
+    left:920px;
+    font-weight: bold;
+    font-size: 150%;
+    color: #4076db;
+}
+
 .logo {
-  width: 200px;
-  position: relative;
-  top: 200px;
-  left: 200px;
+  position: absolute;
+  top: 280px;   
+  left: 90px;  
+  width: 290px;
+  height: auto;
 }
+
+
 .image {
-  position: relative;
-  width: 200px;
-  top: 200px;
-  left: 900px;
+  position: absolute;
+  top: 280px;   
+  right: 80px;  
+  width: 310px;
+  height: auto;
 }
 </style>

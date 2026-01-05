@@ -12,7 +12,7 @@ const handleLanguageChange = (lang) => {
 </script>
 
 <template>
-  <header class="flex justify-between items-center p-4 border-b">
+  <header class="  flex justify-between items-center p-4 border-b bg-gray-900 text-white">
     <h1 class="text-3xl font-bold text-blue-500">
       {{ currentLang === 'ro' ? 'EchoFree' : 'EchoFree' }}
     </h1>
