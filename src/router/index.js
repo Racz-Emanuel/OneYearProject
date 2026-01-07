@@ -6,20 +6,18 @@ import ContactView from "@/sites/ContactView.vue"
 import AboutView from "@/sites/AboutView.vue"
 import DailyChallengeView from "@/sites/DailyChallengeView.vue"
 import BeginnerLessons from "@/lessons/BeginnerLessons.vue"
-import IntermedaiteLessons from "@/lessons/IntermedaiteLessons.vue"
+import IntermediateLessons from "@/lessons/IntermediateLessons.vue"
 import DifficultLessons from "@/lessons/DifficultLessons.vue"
 
 const routes = [
   { path: "/", component: HomeView },
   {
     path: "/lessons",
-    component: LessonsView,
-    children: [
-      { path: "beginner", component: BeginnerLessons },
-      { path: "intermediate", component: IntermedaiteLessons },
-      { path: "difficult", component: DifficultLessons }
-    ]
+    component: LessonsView
   },
+  { path: "/beginner", component: BeginnerLessons },
+  { path: "/intermediate", component: IntermediateLessons },
+  { path: "/difficult", component: DifficultLessons },
   { path: "/quiz", component: QuizView },
   { path: "/contact", component: ContactView },
   { path: "/despre", component: AboutView },
