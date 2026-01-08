@@ -1,14 +1,22 @@
+<script setup>
+import Lessons from "@/components/Lessons.vue"
+</script>
+
 <template>
+  <div class="intermediate-lessons">
+    <h1>Intermediate Lessons</h1>
+  </div>
+
   <div>
-    <h1>Inetrmediate Lessons</h1>
-    <p>Here will be the beginner level lessons...</p>
+    <Lessons />
   </div>
 </template>
 
-<script setup>
-// Optional script
-</script>
-
 <style scoped>
-/* Optional styles */
+.intermediate-lessons {
+  padding: 20px;
+  color: #4f46e5;
+  font-weight: bold;
+  font-size: 32px;
+}
 </style>

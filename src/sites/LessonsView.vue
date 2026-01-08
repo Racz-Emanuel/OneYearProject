@@ -2,9 +2,6 @@
 import { computed } from "vue"
 import { useRoute } from "vue-router"
 
-import Lessons from "@/components/Lessons.vue"
-import Acheivements from "@/components/Acheivements.vue"
-import Numbers from "@/components/Numbers.vue"
 import Sign from "@/components/Sign.vue"
 
 const route = useRoute()
@@ -25,15 +22,12 @@ const showMainCompnents = computed(() => route.path == "/lessons")
 
   <div v-if="showMainCompnents">
     <Sign />
-    <Lessons />
-    <Numbers />
-    <Acheivements />
   </div>
   <router-view />
 </template>
 >
 <style scoped>
-lessons-selector. {
+lessons-selector {
   text-align: center;
   margin-bottom: 20px;
 }
