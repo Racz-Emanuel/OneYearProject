@@ -9,9 +9,6 @@ import { VitePWA } from "vite-plugin-pwa"
 // https://vite.dev/config/
 export default defineConfig({
   base: "",
-  define: {
-    __VUE_OPTIONS_API__: false
-  },
   plugins: [
     VitePWA({
       registerType: "autoUpdate",
@@ -37,5 +34,8 @@ export default defineConfig({
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url))
     }
+  },
+  define: {
+    __VUE_OPTIONS_API__: false
   }
 })
