@@ -7,4 +7,3 @@ import DailyChallenge from "@/components/DailyChallenge.vue"
     <DailyChallenge />
   </div>
 </template>
-

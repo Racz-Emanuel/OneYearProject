@@ -2,12 +2,30 @@
 import FeedBack from "@/components/FeedBack.vue"
 import { useUserStore } from "@/stores/user.js"
 import { useStatsStore } from "@/stores/stats.js"
+import { ref } from "vue"
+import { useDailyChallengeStore } from "@/stores/dailyChallenge"
 
 const userStore = useUserStore()
 const statsStore = useStatsStore()
+const dailyChallenge = useDailyChallengeStore()
+
+const levels = ["beginner", "intermediate", "difficult"]
+
+const loginName = ref("")
+const minutesToAdd = ref(0)
 </script>
 
 <template>
+  <div>
+    <h2>Selectează dificultatea provocărilor</h2>
+
+    <select @change="dailyChallenge.setDifficulty($event.target.value)">
+      <option v-for="level in levels" :key="level" :value="level">
+        {{ level }}
+      </option>
+    </select>
+  </div>
+
   <div>
     <h2>Despre</h2>
     <p>Site-ul încă se construiește, vă rog aveți răbdare</p>
@@ -17,7 +35,7 @@ const statsStore = useStatsStore()
 
     <div>
       <input v-model="loginName" placeholder="Nume utilizator" />
-      <button @click="userStore.login(loginName)">Login</button>
+      <button @click="userStore.login(loginName.value)">Login</button>
       <button @click="userStore.logout">Logout</button>
     </div>
 
@@ -31,7 +49,7 @@ const statsStore = useStatsStore()
 
       <div>
         <input v-model="minutesToAdd" type="number" placeholder="Minute de adăugat" />
-        <button @click="statsStore.addMinutes(Number(minutesToAdd))">Adaugă minute</button>
+        <button @click="statsStore.addMinutes(Number(minutesToAdd.value))">Adaugă minute</button>
       </div>
     </div>
 

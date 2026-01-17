@@ -1,12 +1,22 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, watch, onMounted } from "vue"
 
-const feedback = ref('')
+const feedback = ref("")
+
+onMounted(() => {
+  const draft = localStorage.getItem("feedbackDraft")
+  if (draft) feedback.value = draft
+})
+
+watch(feedback, newVal => {
+  localStorage.setItem("feedbackDraft", newVal)
+})
 
 const submit = () => {
-  console.log('Feedback:', feedback.value)
-  feedback.value = ''
-  alert('Mulțumim pentru feedback!')
+  console.log("Feedback:", feedback.value)
+  feedback.value = ""
+  localStorage.removeItem("feedbackDraft")
+  alert("Mulțumim pentru feedback!")
 }
 </script>
 

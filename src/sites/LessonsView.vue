@@ -5,13 +5,22 @@ import { useRoute } from "vue-router"
 import Sign from "@/components/Sign.vue"
 
 const route = useRoute()
-const showMainCompnents = computed(() => route.path == "/lessons")
+
+const showMainComponents = computed(() => {
+  return (
+    route.path == "/lessons" ||
+    route.path == "/beginner" ||
+    route.path == "/intermediate" ||
+    route.path == "/difficult"
+  )
+})
 </script>
 
 <template>
   <div class="lessons-selector">
     <h2 class="selector-title">Selector de dificultate</h2>
   </div>
+
   <div class="level-block">
     <div class="levels-container">
       <router-link to="/beginner" class="level-card">Beginner</router-link>
@@ -20,14 +29,15 @@ const showMainCompnents = computed(() => route.path == "/lessons")
     </div>
   </div>
 
-  <div v-if="showMainCompnents">
+  <div v-if="showMainComponents">
     <Sign />
   </div>
+
   <router-view />
 </template>
->
+
 <style scoped>
-lessons-selector {
+.lessons-selector {
   text-align: center;
   margin-bottom: 20px;
 }
@@ -50,7 +60,7 @@ lessons-selector {
   font-weight: bold;
 }
 
-.levels-block {
+.level-block {
   background-color: #e0e7ff;
   padding: 20px;
   border-radius: 12px;

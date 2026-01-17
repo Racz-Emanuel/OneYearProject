@@ -3,9 +3,9 @@
   "dockerComposeFile": "../compose.yaml",
   "service": "app",
   "workspaceFolder": "/app",
-  "mounts": [
-    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.gitconfig,target=/home/node/.gitconfig,type=bind,consistency=cached"
-  ],
+ "mounts": [
+  "source=${localEnv:USERPROFILE}/.gitconfig,target=/home/node/.gitconfig,type=bind,consistency=cached"
+],
   "customizations": {
     "vscode": {
       "extensions": [
