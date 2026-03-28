@@ -1,0 +1,12 @@
+@mainUrl = http://localhost:3000/university
+###
+
+#get all universities
+#hello world form university
+GET {{mainUrl}}/
+
+
+###
+#get an2
+
+GET {{mainUrl}}/an2

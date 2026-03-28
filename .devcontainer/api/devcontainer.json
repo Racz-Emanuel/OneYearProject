@@ -1,0 +1,33 @@
+{
+  "name": "ProiectAn - Api",
+  "dockerComposeFile": "../../compose.yaml",
+  "service": "api",
+  "runServices": ["mysql", "phpmyadmin"],
+  "workspaceFolder": "/languages",
+  "mounts": [
+    "source=${localEnv:USERPROFILE}/.gitconfig,target=/home/node/.gitconfig,type=bind,consistency=cached"
+  ],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "arcanis.vscode-zipfs",
+        "esbenp.prettier-vscode",
+        "humao.rest-client"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": "always",
+          "source.fixAll": "always"
+        }
+      }
+    }
+  },
+  "forwardPorts": [3001],
+  "containerEnv": {
+    "COREPACK_ENABLE_DOWNLOAD_PROMPT": "0"
+  },
+  "postCreateCommand": "yarn install"
+}
