@@ -1,0 +1,30 @@
+### GET ALL SIGNS
+GET http://localhost:3000/signs
+
+
+### GET SIGNS BY LESSON
+GET http://localhost:3000/signs/lesson/1
+
+
+### CREATE SIGN
+POST http://localhost:3000/signs/create
+Content-Type: application/json
+
+{
+  "label": "Hello",
+  "imageUrl": "http://localhost:3000/images/hello.jpg",
+  "lessonId": 1
+}
+
+
+### UPDATE SIGN
+PUT http://localhost:3000/signs/update/1
+Content-Type: application/json
+
+{
+  "label": "Hello Updated"
+}
+
+
+### DELETE SIGN
+DELETE http://localhost:3000/signs/delete/1

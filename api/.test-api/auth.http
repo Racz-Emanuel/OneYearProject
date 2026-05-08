@@ -1,7 +1,28 @@
-@mainUrl = http://localhost:3000/
-###
-#
-GET {{mainUrl}}
-###
-#
-GET {{mainUrl}}/test
+### REGISTER USER 1
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "password": "1234"
+}
+
+### REGISTER USER 2
+
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+  "username": "Luke",
+  "password": "4321"
+}
+
+
+### LOGIN USER
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "username": "Emi",
+  "password": "1234"
+}

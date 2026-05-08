@@ -3,29 +3,41 @@ import { ref, onMounted } from "vue"
 
 const quote = ref("")
 const author = ref("")
+const loading = ref(true)
+const error = ref(null)
 
-const quotes = [
-  { text: "Fiecare semn învățat este o punte către o conversație nouă.", author: "EchoFree" },
-  { text: "Limbajul semnelor nu vorbește doar cu mâinile, ci și cu inima.", author: "Anonim" },
-  {
-    text: "Învățarea unui semn durează o clipă. Impactul lui durează o viață.",
-    author: "EchoFree"
-  },
-  { text: "Nu ești niciodată prea bătrân să înveți un semn nou.", author: "Proverb" },
-  { text: "Un semn mic poate deschide o lume mare.", author: "EchoFree" }
-]
+onMounted(async () => {
+  try {
+    const response = await fetch("http://localhost:3000/quotes")
+    if (!response.ok) throw new Error("Failed to fetch quotes")
 
-onMounted(() => {
-  const randomIndex = Math.floor(Math.random() * quotes.length)
-  quote.value = quotes[randomIndex].text
-  author.value = quotes[randomIndex].author
+    const quotes = await response.json()
+
+    if (quotes.length === 0) {
+      quote.value = "No quotes available."
+      author.value = ""
+      return
+    }
+
+    const randomIndex = Math.floor(Math.random() * quotes.length)
+    quote.value = quotes[randomIndex].text
+    author.value = quotes[randomIndex].author
+  } catch (err) {
+    error.value = err.message
+  } finally {
+    loading.value = false
+  }
 })
 </script>
 
 <template>
   <div>
-    <h3>Citat motivațional</h3>
-    <blockquote>
+    <h3>Motivational Quote</h3>
+
+    <p v-if="loading">Se încarcă...</p>
+    <p v-else-if="error">Eroare: {{ error }}</p>
+
+    <blockquote v-else>
       <p>
         <em>"{{ quote }}"</em>
       </p>

@@ -1,0 +1,30 @@
+### GET ALL PROGRESS
+GET http://localhost:3000/progress
+
+
+### GET PROGRESS BY USER
+GET http://localhost:3000/progress/user/1
+
+
+### CREATE PROGRESS
+POST http://localhost:3000/progress/create
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "lessonId": 1,
+  "completed": true
+}
+
+
+### UPDATE PROGRESS
+PUT http://localhost:3000/progress/update/1
+Content-Type: application/json
+
+{
+  "completed": false
+}
+
+
+### DELETE PROGRESS
+DELETE http://localhost:3000/progress/delete/1

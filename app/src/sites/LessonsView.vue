@@ -2,90 +2,131 @@
 import { computed } from "vue"
 import { useRoute } from "vue-router"
 
-import Sign from "@/components/Sign.vue"
-
 const route = useRoute()
 
 const showMainComponents = computed(() => {
   return (
     route.path == "/lessons" ||
-    route.path == "/beginner" ||
-    route.path == "/intermediate" ||
-    route.path == "/difficult"
+    route.path == "/lessons/beginner" ||
+    route.path == "/lessons/intermediate" ||
+    route.path == "/lessons/advanced"
   )
 })
 </script>
 
 <template>
-  <div class="lessons-selector">
-    <h2 class="selector-title">Selector de dificultate</h2>
-  </div>
+  <div class="wrapper">
+    <div class="card">
+      <!-- TITLE -->
+      <h1 class="title">Choose Your Level</h1>
+      <p class="subtitle">Select a difficulty to start learning</p>
 
-  <div class="level-block">
-    <div class="levels-container">
-      <router-link to="/beginner" class="level-card">Beginner</router-link>
-      <router-link to="/intermediate" class="level-card">Intermediate</router-link>
-      <router-link to="/difficult" class="level-card">Difficult</router-link>
+      <!-- BUTTONS -->
+      <div class="levels">
+        <router-link to="/lessons/beginner" class="level beginner"> Beginner </router-link>
+
+        <router-link to="/lessons/intermediate" class="level intermediate">
+          Intermediate
+        </router-link>
+
+        <router-link to="/lessons/advanced" class="level advanced"> Advanced </router-link>
+      </div>
     </div>
-  </div>
 
-  <div v-if="showMainComponents">
-    <Sign />
+    <router-view />
   </div>
-
-  <router-view />
 </template>
 
 <style scoped>
-.lessons-selector {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.selector-block {
-  background-color: #4f46e5;
-  text-align: center;
-  padding: 20px 0;
-  border-radius: 12px;
-  margin-bottom: 20px;
-}
-
-.selector-title {
-  display: inline-block;
-  background-color: #4f46e5;
-  color: white;
-  padding: 15px 40px;
-  border-radius: 12px;
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.level-block {
-  background-color: #e0e7ff;
-  padding: 20px;
-  border-radius: 12px;
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.levels-container {
+/* BACKGROUND */
+.wrapper {
+  height: 100vh;
   display: flex;
   justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
+  align-items: center;
+
+  background: linear-gradient(135deg, #eef2ff, #e0e7ff);
+  padding: 20px;
 }
 
-.level-card {
-  padding: 15px 25px;
-  background-color: #6366f1;
-  color: white;
-  font-weight: bold;
+/* CARD */
+.card {
+  width: 100%;
+  max-width: 420px;
+
+  background: white;
+  padding: 2.2rem;
+
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+
+  text-align: center;
+}
+
+/* TITLE */
+.title {
+  font-size: 28px;
+  font-weight: 800;
+  color: #4f46e5;
+  margin-bottom: 6px;
+}
+
+/* SUBTITLE */
+.subtitle {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+
+/* BUTTON CONTAINER */
+.levels {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* BASE BUTTON */
+.level {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 14px;
+
+  border-radius: 12px;
   text-decoration: none;
-  border-radius: 8px;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  transition: 0.2s;
+  border: 1px solid #e5e7eb;
 }
 
-.level-card:hover {
-  background-color: #4f46e5;
-  transform: scale(1.05);
+/* COLORS */
+.beginner {
+  background: #ecfdf5;
+  color: #059669;
+}
+
+.intermediate {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.advanced {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+/* HOVER EFFECT */
+.level:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+/* ACTIVE CLICK */
+.level:active {
+  transform: scale(0.98);
 }
 </style>

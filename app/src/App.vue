@@ -11,22 +11,24 @@
 <script setup>
 import Header from "./components/Header.vue"
 import Footer from "./components/Footer.vue"
-import { useAuth } from "@/stores/auth"
 import { onMounted, computed } from "vue"
 import { useRouter, useRoute } from "vue-router"
+import { useUserStore } from "@/stores/user"
 
-const auth = useAuth()
 const router = useRouter()
 const route = useRoute()
+const userStore = useUserStore()
+
+userStore.loadSession()
 
 onMounted(() => {
-  if (!auth.isAuthenticated && route.path !== "/login") {
+  if (!userStore.loggedIn && route.path !== "/login") {
     router.push("/login")
   }
 })
 
 function logout() {
-  auth.logout()
+  userStore.logout()
 }
 
 const showLayout = computed(() => route.path !== "/login")

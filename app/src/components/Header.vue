@@ -16,19 +16,18 @@ const handleLanguageChange = lang => {
 </script>
 
 <template>
-  <header class="flex items-center justify-between border-b bg-gray-900 p-4 text-white">
-    <h1 class="text-3xl font-bold text-blue-500">
-      {{ currentLang === "ro" ? "EchoFree" : "EchoFree" }}
-    </h1>
+  <header
+    class="flex items-center justify-between border-b border-gray-700 bg-gray-900 px-8 py-5 text-white"
+  >
+    <h1 class="text-3xl font-extrabold tracking-tight text-blue-500">EchoFree</h1>
 
     <Navbar :lang="currentLang" />
 
     <div class="flex items-center gap-4">
       <LanguageSelector @changeLanguage="handleLanguageChange" />
 
-      <!-- Buton logout -->
       <button
-        class="rounded bg-red-500 px-4 py-2 text-white hover:bg-red-600"
+        class="rounded-lg border border-red-500 px-5 py-2 text-sm font-semibold text-red-400 transition hover:bg-red-500 hover:text-white"
         @click="props.onLogout"
       >
         Logout

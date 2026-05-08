@@ -1,0 +1,34 @@
+### GET ALL PROFILES
+GET http://localhost:3000/profile
+
+###
+
+### GET PROFILE BY USER
+GET http://localhost:3000/profile/user/1
+
+###
+
+### CREATE PROFILE
+POST http://localhost:3000/profile/create
+Content-Type: application/json
+
+{
+  "age": 20,
+  "level": "Beginner",
+  "userId": 1
+}
+
+###
+
+### UPDATE PROFILE
+PUT http://localhost:3000/profile/update/1
+Content-Type: application/json
+
+{
+  "level": "Intermediate"
+}
+
+###
+
+### DELETE PROFILE
+DELETE http://localhost:3000/profile/delete/1

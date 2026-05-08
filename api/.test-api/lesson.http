@@ -1,0 +1,147 @@
+### =========================
+### CREATE BEGINNER LESSONS
+### =========================
+
+POST http://localhost:3000/lessons/create
+Content-Type: application/json
+
+{
+  "title": "Basic Greetings",
+  "level": "Beginner"
+}
+
+###
+
+POST http://localhost:3000/lessons/create
+Content-Type: application/json
+
+{
+  "title": "Introducing Yourself",
+  "level": "Beginner"
+}
+
+###
+
+POST http://localhost:3000/lessons/create
+Content-Type: application/json
+
+{
+  "title": "Common Questions",
+  "level": "Beginner"
+}
+
+### =========================
+### INTERMEDIATE LESSONS
+### =========================
+
+POST http://localhost:3000/lessons/create
+Content-Type: application/json
+
+{
+  "title": "Daily Conversations",
+  "level": "Intermediate"
+}
+
+###
+
+POST http://localhost:3000/lessons/create
+Content-Type: application/json
+
+{
+  "title": "Expressing Feelings",
+  "level": "Intermediate"
+}
+
+###
+
+POST http://localhost:3000/lessons/create
+Content-Type: application/json
+
+{
+  "title": "Time and Schedules",
+  "level": "Intermediate"
+}
+
+
+
+### =========================
+### ADVANCED LESSONS
+### =========================
+
+POST http://localhost:3000/lessons/create
+Content-Type: application/json
+
+{
+  "title": "Complex Sentences in Sign Language",
+  "level": "Advanced"
+}
+
+###
+
+POST http://localhost:3000/lessons/create
+Content-Type: application/json
+
+{
+  "title": "Storytelling in Sign Language",
+  "level": "Advanced"
+}
+
+###
+
+POST http://localhost:3000/lessons/create
+Content-Type: application/json
+
+{
+  "title": "Professional Communication",
+  "level": "Advanced"
+}
+
+
+
+### =========================
+### READ OPERATIONS
+### =========================
+
+### GET ALL LESSONS
+GET http://localhost:3000/lessons
+
+###
+
+### GET BEGINNER LESSONS
+GET http://localhost:3000/lessons?level=Beginner
+
+###
+
+### GET INTERMEDIATE LESSONS
+GET http://localhost:3000/lessons?level=Intermediate
+
+###
+
+### GET ADVANCED LESSONS
+GET http://localhost:3000/lessons?level=Advanced
+
+###
+
+### GET ONE LESSON
+GET http://localhost:3000/lessons/1
+
+
+### =========================
+### UPDATE LESSON
+### =========================
+
+PUT http://localhost:3000/lessons/update/1
+Content-Type: application/json
+
+{
+  "title": "Updated Lesson Title",
+  "level": "Beginner"
+}
+
+
+
+### =========================
+### DELETE LESSON
+### =========================
+
+DELETE http://localhost:3000/lessons/delete/2
