@@ -1,15 +1,23 @@
 <script setup>
 import { ref, onMounted } from "vue"
 import axios from "axios"
+import { useRouter } from "vue-router"
 import Acheivements from "@/components/Acheivements.vue"
 
 const lessons = ref([])
 const selected = ref(null)
+const router = useRouter()
 
 onMounted(async () => {
   const res = await axios.get("http://localhost:3000/lessons?level=Beginner")
   lessons.value = res.data
 })
+function goToLesson(lesson) {
+  router.push({
+    path: `/lessons/beginner/${lesson.id}`,
+    query: { title: lesson.title }
+  })
+}
 </script>
 
 <template>
@@ -22,7 +30,7 @@ onMounted(async () => {
         :key="lesson.id"
         class="lesson-btn"
         :class="{ active: selected === lesson.id }"
-        @click="selected = lesson.id"
+        @click="goToLesson(lesson)"
       >
         <div class="num">{{ String(i + 1).padStart(2, "0") }}</div>
         <div class="lesson-info">

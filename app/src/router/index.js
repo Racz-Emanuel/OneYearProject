@@ -19,6 +19,12 @@ const routes = [
   { path: "/", component: HomeView, meta: { requiresAuth: true } },
   { path: "/lessons", component: LessonsView, meta: { requiresAuth: true } },
   { path: "/lessons/beginner", component: BeginnerLessons, meta: { requiresAuth: true } },
+  {
+    path: "/lessons/beginner/:id",
+    component: () => import("@/lessons/BeginnerLessonDetail.vue"),
+    meta: { requiresAuth: true }
+  },
+
   { path: "/lessons/intermediate", component: IntermediateLessons, meta: { requiresAuth: true } },
   { path: "/lessons/advanced", component: AdvancedLessons, meta: { requiresAuth: true } },
   { path: "/quiz", component: QuizView, meta: { requiresAuth: true } },
