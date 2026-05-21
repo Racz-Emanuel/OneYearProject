@@ -2,6 +2,7 @@
 import { ref, onMounted } from "vue"
 import { useRouter, useRoute } from "vue-router"
 import axios from "axios"
+import HandRecognition from "../components/HandRecognition.vue"
 
 const route = useRoute()
 const router = useRouter()
@@ -33,6 +34,10 @@ onMounted(async () => {
         <img :src="sign.imageUrl" class="sign-image" />
         <p class="sign-label">{{ sign.label }}</p>
       </div>
+    </div>
+
+    <div>
+      <HandRecognition />
     </div>
   </div>
 </template>

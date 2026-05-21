@@ -13,6 +13,10 @@ export const Sign = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    lessonId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   },
   {
     freezeTableName: true,
