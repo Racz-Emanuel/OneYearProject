@@ -16,7 +16,7 @@ services:
       - ./:/languages
       - /languages/app/node_modules
     working_dir: /languages/app
-    command: yarn dev
+    command: sleep infinity
 
   api:
     build:
@@ -36,7 +36,7 @@ services:
       - ./:/languages
       - /languages/api/node_modules
     working_dir: /languages/api
-    command: node api.js
+    command: sleep infinity
 
   mysql:
     build: .docker/mysql
