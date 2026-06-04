@@ -9,16 +9,17 @@ import { defineConfig } from "eslint/config";
 
 
 export default defineConfig([
-  { ignores: ["dist/**", "dev-dist/**", ".pnp.*", ".yarn/**", "node_modules/**"] },
+  { ignores: ["dist/**", "dev-dist/**", ".pnp.*", ".yarn/**", "node_modules/**", "android/**", "ios/**", "package-lock.json"] },
   { files: ["**/*.{js,mjs,cjs,vue}"], plugins: { js }, extends: ["js/recommended"], languageOptions: { globals: globals.browser } },
   ...pluginVue.configs["flat/essential"].map(config => ({
   ...config,
-  files: ["**/*.vue"]
+  files: ["**/*.vue"],
+  rules: { "vue/multi-word-component-names": "off" }
   })),
   { files: ["**/*.json"], plugins: { json }, language: "json/json", extends: ["json/recommended"] },
   { files: ["**/*.jsonc"], plugins: { json }, language: "json/jsonc", extends: ["json/recommended"] },
   { files: ["**/*.json5"], plugins: { json }, language: "json/json5", extends: ["json/recommended"] },
   { files: ["**/*.md"], plugins: { markdown }, language: "markdown/commonmark", extends: ["markdown/recommended"] },
-  { files: ["**/*.css"], plugins: { css }, language: "css/css", extends: ["css/recommended"] },
+  { files: ["**/*.css"], plugins: { css }, language: "css/css", extends: ["css/recommended"], rules: { "css/no-invalid-at-rules": "off" } },
     prettierConfig,
 ]);

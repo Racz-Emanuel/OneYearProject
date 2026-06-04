@@ -14,6 +14,11 @@ export const User = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
+
+    refreshToken: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
   },
   {
     freezeTableName: true,

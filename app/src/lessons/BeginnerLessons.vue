@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted } from "vue"
-import axios from "axios"
+import api from "@/services/api.js"
 import { useRouter } from "vue-router"
 import Acheivements from "@/components/Acheivements.vue"
 
@@ -9,9 +9,17 @@ const selected = ref(null)
 const router = useRouter()
 
 onMounted(async () => {
-  const res = await axios.get("http://localhost:3000/lessons?level=Beginner")
-  lessons.value = res.data
+  try {
+    const token = localStorage.getItem("token") // or wherever you store it
+    const res = await api.get("/lessons?level=Beginner", {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+    lessons.value = res.data
+  } catch (err) {
+    console.error("Error fetching lessons:", err)
+  }
 })
+
 function goToLesson(lesson) {
   router.push({
     path: `/lessons/beginner/${lesson.id}`,

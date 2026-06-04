@@ -12,36 +12,41 @@ import progressRouter from "./router/progressRouter.js";
 import profileRouter from "./router/profileRouter.js";
 import quotesRouter from "./router/quotesRouter.js";
 import feedbackRouter from "./router/feedbackRouter.js";
+import { authenticateToken } from "./middleware/authMiddleware.js";
 
 const api = express();
 const port = 3000;
 
-api.use(function (req, res, next) {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, OPTIONS, PUT, PATCH, DELETE",
-  );
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "X-Requested-With,content-type",
-  );
-  res.setHeader("Access-Control-Allow-Credentials", true);
-  next();
-});
+// 1. UPDATED CORS CONFIGURATION
+// Your custom middleware below it was missing 'Authorization' in Access-Control-Allow-Headers.
+// Because you're using the 'cors' library, it's cleaner and safer to let it handle everything, including the Authorization header.
+api.use(
+  cors({
+    origin: "*",
+    methods: "GET, POST, OPTIONS, PUT, PATCH, DELETE",
+    allowedHeaders: "X-Requested-With,content-type,Authorization", // Crucial for JWT!
+    credentials: true,
+  }),
+);
 
-api.use(cors());
 api.use(bodyParser.json());
 
-api.use("/university", universityRouter);
+// 2. PUBLIC ROUTES
+// Anyone can hit these endpoints without a token
 api.use("/auth", authRouter);
-api.use("/lessons", lessonRouter);
-api.use("/signs", signRouter);
-api.use("/progress", progressRouter);
-api.use("/profile", profileRouter);
+api.use("/university", universityRouter);
 api.use("/quotes", quotesRouter);
-api.use("/feedback", feedbackRouter);
 
+// 3. PROTECTED ROUTES (Linked via Middleware)
+// By injecting `authenticateToken` right here, every single route inside these routers
+// automatically becomes protected. The frontend MUST provide a valid JWT to access them.
+api.use("/profile", authenticateToken, profileRouter);
+api.use("/progress", authenticateToken, progressRouter);
+api.use("/lessons", authenticateToken, lessonRouter);
+api.use("/signs", authenticateToken, signRouter);
+api.use("/feedback", authenticateToken, feedbackRouter);
+
+// Database Sync
 sequelize.sync({ alter: true }).then(() => {
   console.log("Database synced (ALTER mode)");
 });

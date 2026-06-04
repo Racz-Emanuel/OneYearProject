@@ -1,8 +1,8 @@
 <script setup>
 import { ref, onMounted } from "vue"
 import { useRouter, useRoute } from "vue-router"
-import axios from "axios"
 import HandRecognition from "../components/HandRecognition.vue"
+import api from "@/services/api.js" // ✅
 
 const route = useRoute()
 const router = useRouter()
@@ -13,7 +13,7 @@ const lessonTitle = route.query.title
 onMounted(async () => {
   const lessonId = route.params.id
 
-  const res = await axios.get(`http://localhost:3000/signs/lesson/${lessonId}`)
+  const res = await api.get(`/signs/lesson/${lessonId}`)
   signs.value = res.data
   loading.value = false
 })

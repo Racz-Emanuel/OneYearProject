@@ -1,44 +1,56 @@
+// profileRouter.js
 import { Router } from "express";
 import { Profile } from "../database/entities/profile.model.js";
+import { authenticateToken } from "../middleware/authMiddleware.js"; // Import your middleware
 
 const router = Router();
 
-router.get("/", async (req, res) => {
-  const profiles = await Profile.findAll();
-  res.json(profiles);
+// GET current logged-in user's profile
+router.get("/me", authenticateToken, async (req, res) => {
+  try {
+    const profile = await Profile.findOne({
+      where: { userId: req.user.id },
+    });
+
+    if (!profile) return res.status(404).json({ error: "Profile not found" });
+    res.json(profile);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 });
 
-router.get("/user/:userId", async (req, res) => {
-  const profile = await Profile.findOne({
-    where: { userId: req.params.userId },
-  });
+// UPDATE current logged-in user's profile
+router.put("/update", authenticateToken, async (req, res) => {
+  try {
+    const profile = await Profile.findOne({
+      where: { userId: req.user.id },
+    });
 
-  res.json(profile);
+    if (!profile) return res.status(404).json({ error: "Profile not found" });
+
+    await profile.update(req.body);
+    res.json({ success: true, profile });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 });
 
-router.post("/create", async (req, res) => {
-  const profile = await Profile.create(req.body);
-  res.json(profile);
-});
+// RESET STATS (Moved cleanly from authRouter)
+router.delete("/stats/reset", authenticateToken, async (req, res) => {
+  try {
+    const profile = await Profile.findOne({
+      where: { userId: req.user.id },
+    });
+    if (!profile)
+      return res
+        .status(404)
+        .json({ success: false, message: "Profile not found" });
 
-router.put("/update/:id", async (req, res) => {
-  const profile = await Profile.findByPk(req.params.id);
-
-  if (!profile) return res.json({ error: "Not found" });
-
-  await profile.update(req.body);
-
-  res.json({ success: true });
-});
-
-router.delete("/delete/:id", async (req, res) => {
-  const profile = await Profile.findByPk(req.params.id);
-
-  if (!profile) return res.json({ error: "Not found" });
-
-  await profile.destroy();
-
-  res.json({ success: true });
+    await profile.update({ sessions: 0, minutes: 0 });
+    res.json({ success: true, profile });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
 });
 
 export default router;

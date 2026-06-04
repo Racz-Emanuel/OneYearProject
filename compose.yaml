@@ -1,6 +1,8 @@
 services:
   app:
-    build: .docker/app
+    build:
+      context: .
+      dockerfile: .docker/app/Dockerfile
     stdin_open: true
     tty: true
     container_name: app.languages
@@ -12,11 +14,14 @@ services:
       - "5173:5173"
     volumes:
       - ./:/languages
+      - /languages/app/node_modules
     working_dir: /languages/app
-    user: "1000:1000"
+    command: yarn dev
 
   api:
-    build: .docker/api
+    build:
+      context: .
+      dockerfile: .docker/api/Dockerfile
     stdin_open: true
     tty: true
     container_name: api.languages
@@ -26,10 +31,12 @@ services:
       CHOKIDAR_INTERVAL: 100
     ports:
       - "3000:3000"
+      - "3001:3001"
     volumes:
       - ./:/languages
+      - /languages/api/node_modules
     working_dir: /languages/api
-    user: "1000:1000"
+    command: node api.js
 
   mysql:
     build: .docker/mysql

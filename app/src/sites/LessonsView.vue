@@ -1,17 +1,4 @@
 <script setup>
-import { computed } from "vue"
-import { useRoute } from "vue-router"
-
-const route = useRoute()
-
-const showMainComponents = computed(() => {
-  return (
-    route.path == "/lessons" ||
-    route.path == "/lessons/beginner" ||
-    route.path == "/lessons/intermediate" ||
-    route.path == "/lessons/advanced"
-  )
-})
 </script>
 
 <template>

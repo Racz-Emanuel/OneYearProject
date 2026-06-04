@@ -5,8 +5,6 @@ defineProps({
   title: String,
   youtubeUrl: String
 })
-
-const emit = defineEmits(['play'])
 </script>
 
 <template>
